@@ -1,0 +1,22 @@
+<h1>Congress Today</h1>
+<h3>TODO(srt32): About Us</h3>
+
+<h3>Coming soon</h3>
+<ul>
+  <li>Related media for each bill</li>     
+  <li>Related amendments for each bill</li>
+</ul>
+
+<h2>Recently Introduced Bills</h2>
+
+<ul>
+  <% @recent_bills.each do |recent_bill| %>
+    <li>
+      title: <%= link_to(recent_bill.title, recent_bill.urls_congress) %> <br>
+      bill id: <%= recent_bill.bill_id %> <br>
+      chamber: <%= recent_bill.chamber %> <br>
+      introduce on: <%= recent_bill.introduced_on %> <br>
+      sponsor: <%= recent_bill.sponsor_last_name %> <br>
+    </li>
+  <% end %>
+</ul>
