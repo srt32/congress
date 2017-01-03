@@ -3,7 +3,6 @@
 
 <h3>Coming soon</h3>
 <ul>
-  <li>Related media for each bill</li>     
   <li>Related amendments for each bill</li>
 </ul>
 
@@ -12,11 +11,19 @@
 <ul>
   <% @recent_bills.each do |recent_bill| %>
     <li>
-      title: <%= link_to(recent_bill.title, recent_bill.urls_congress) %> <br>
+      title: <%= link_to(recent_bill.short_title || recent_bill.title, recent_bill.urls_congress) %> <br>
       bill id: <%= recent_bill.bill_id %> <br>
       chamber: <%= recent_bill.chamber %> <br>
-      introduce on: <%= recent_bill.introduced_on %> <br>
+      introduced on: <%= recent_bill.introduced_on %> <br>
       sponsor: <%= recent_bill.sponsor_last_name %> <br>
+      recent_news:
+        <ul>
+          <% recent_bill.articles.each do |article| %>
+            <li>
+              <%= link_to(article.title, article.link) %> published at <%= article.publish_date %>
+            </li>
+          <% end %>
+        </ul>
     </li>
   <% end %>
 </ul>

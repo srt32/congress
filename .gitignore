@@ -23,3 +23,6 @@
 # vim
 *.swp
 *.swo
+
+# OSX
+.DS_Store

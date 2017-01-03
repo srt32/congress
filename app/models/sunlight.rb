@@ -12,16 +12,20 @@ class Sunlight
     response = Net::HTTP.get(uri) 
     parsed_response = JSON.parse(response)
 
-    # TODO(srt32): remove me # puts("parsed_response: ", parsed_response)
-    
     results = parsed_response["results"]
     results.map { |result| Bill.new(result) }
   end
 end
 
 class Bill
+  attr_writer :articles
+
   def initialize(raw_bill)
     @raw_bill = raw_bill
+  end
+
+  def articles
+    @articles || []
   end
 
   def bill_id
@@ -34,6 +38,10 @@ class Bill
 
   def introduced_on
     @raw_bill["introduced_on"]
+  end
+
+  def short_title
+    @raw_bill["short_title"]
   end
 
   def title

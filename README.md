@@ -1,5 +1,30 @@
 # README
 
+# nytimes api:
+
+http://developer.nytimes.com/article_search_v2.json#/Console/GET/articlesearch.json
+
+sample query for article search:
+
+```
+uri = URI("https://api.nytimes.com/svc/search/v2/articlesearch.json")
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+uri.query = URI.encode_www_form({
+  "api-key" => XXX_API_KEY,
+  "q" => "congress bill 957",
+  "begin_date" => "20161201"
+})
+request = Net::HTTP::Get.new(uri.request_uri)
+@result = JSON.parse(http.request(request).body)
+puts @result.inspect
+```
+
+# some other ideas for new api's
+* https://webhose.io/archive#
+* http://eventregistry.org/searchEvents
+* http://developer.nytimes.com/times_tags_v3.json#/Console/GET/timestags.json
+
 # sunglight API for bills
 
 docs: https://sunlightlabs.github.io/congress/bills.html
