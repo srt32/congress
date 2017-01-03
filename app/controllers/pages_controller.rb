@@ -3,6 +3,9 @@ class PagesController < ApplicationController
     @recent_bills = get_recent_bills
   end
 
+  def about
+  end
+
   private
 
   def get_recent_bills
