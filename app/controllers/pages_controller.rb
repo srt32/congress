@@ -3,12 +3,15 @@ class PagesController < ApplicationController
     @recent_bills = get_recent_bills
 
     @recent_bills.each do |recent_bill|
-      Rails.cache.fetch("recent_articles-#{recent_bill.bill_id}", expires_in: 15.minutes) do
+      articles = Rails.cache.fetch("recent_articles-#{recent_bill.bill_id}", expires_in: 15.minutes) do
         Rails.logger.info("fetching recent articles for #{recent_bill.bill_id}")
-        recent_bill.articles = GoogleNews.new.recent_articles(
+
+        GoogleNews.new.recent_articles(
           recent_bill.short_title || recent_bill.title
         ).first(5)
       end
+
+      recent_bill.articles = articles
     end
   end
 
@@ -20,6 +23,7 @@ class PagesController < ApplicationController
   def get_recent_bills
     Rails.cache.fetch("recent_bills", expires_in: 30.minutes) do
       Rails.logger.info("fetching recent bills")
+
       client = Sunlight.new
       client.recent_bills
     end
