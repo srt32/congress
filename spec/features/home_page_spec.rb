@@ -12,7 +12,9 @@ describe 'about' do
   it 'loads the about page' do
     visit '/'
 
-    click_on "About Us"
+    within(".mdl-layout__header") do
+      click_on "About Us"
+    end
 
     expect(page.current_path).to eq("/about")
     expect(page).to have_content("We are a group of")

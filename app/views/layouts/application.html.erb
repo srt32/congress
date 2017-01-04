@@ -9,6 +9,33 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Congress Today</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+            <%= link_to("About Us", about_path, class: "mdl-navigation__link") %>
+          </nav>
+        </div>
+      </header>
+
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Congress Today</span>
+        <nav class="mdl-navigation">
+          <%= link_to("Home", root_path, class: "mdl-navigation__link") %>
+          <%= link_to("About Us", about_path, class: "mdl-navigation__link") %>
+        </nav>
+      </div>
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <%= yield %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
