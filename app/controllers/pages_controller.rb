@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
     @recent_bills.each do |recent_bill|
       Rails.cache.fetch("recent_articles-#{recent_bill.bill_id}", expires_in: 15.minutes) do
+        Rails.logger.info("fetching recent articles for #{recent_bill.bill_id}")
         recent_bill.articles = GoogleNews.new.recent_articles(
           recent_bill.short_title || recent_bill.title
         ).first(5)
