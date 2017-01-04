@@ -1,6 +1,16 @@
-# README
+# Congress Today
 
-# nytimes api:
+This app runs on Rails and uses the Sunlight Foundation API and the Google News RSS Feed.
+
+To boot the server: `rails s`
+
+To run the specs: `rspec`
+
+Contributions welcome!
+
+# Related notes:
+
+## nytimes api:
 
 http://developer.nytimes.com/article_search_v2.json#/Console/GET/articlesearch.json
 
@@ -20,12 +30,12 @@ request = Net::HTTP::Get.new(uri.request_uri)
 puts @result.inspect
 ```
 
-# some other ideas for new api's
+## some other ideas for new api's
 * https://webhose.io/archive#
 * http://eventregistry.org/searchEvents
 * http://developer.nytimes.com/times_tags_v3.json#/Console/GET/timestags.json
 
-# sunglight API for bills
+## sunglight API for bills
 
 docs: https://sunlightlabs.github.io/congress/bills.html
 
@@ -75,3 +85,5 @@ returns
       },
       "withdrawn_cosponsors_count": 0
     }
+  ...
+```
