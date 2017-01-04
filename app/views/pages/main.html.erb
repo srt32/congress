@@ -1,21 +1,26 @@
 <h2 class=page-header>Recently Introduced Bills</h2>
 
-<ul>
-  <% @recent_bills.each do |recent_bill| %>
-    <li>
-      <%= link_to(recent_bill.short_title || recent_bill.title, recent_bill.urls_congress) %> <br>
-      Bill: <%= recent_bill.bill_id %> <br>
-      Chamber: <%= recent_bill.chamber %> <br>
-      Introduced: <%= recent_bill.introduced_on %> <br>
-      Sponsor: <%= recent_bill.sponsor_last_name %> <br>
-      News:
-        <ul>
-          <% recent_bill.articles.each do |article| %>
-            <li>
-              <%= link_to(article.title, article.link) %> published at <%= article.publish_date %>
-            </li>
-          <% end %>
-        </ul>
-    </li>
-  <% end %>
-</ul>
+<% @recent_bills.each do |recent_bill| %>
+  <article id=bill-card>
+    <div class=bill-title>
+      <h5><%= link_to(recent_bill.short_title || recent_bill.title, recent_bill.urls_congress) %></h5>
+    </div>
+
+    <div class=bill-metadata>
+      Introduced: <%= recent_bill.introduced_on %><br>
+      Bill: <%= recent_bill.bill_id %><br>
+      Chamber: <%= recent_bill.chamber %><br>
+      Sponsor: <%= recent_bill.sponsor_last_name %><br>
+    </div>
+
+    <div class=bill-news>
+      <ul>
+        <% recent_bill.articles.each do |article| %>
+          <li>
+            <%= link_to(article.title, article.link) %> (<%= article.publish_date %>)
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </article>
+<% end %>

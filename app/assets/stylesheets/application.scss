@@ -7,3 +7,29 @@
 .page-header {
   margin-top: 50px;
 }
+
+#bill-card {
+  border-radius: 5px;
+  background: #D3D3D3;
+  padding: 10px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.bill-title {
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 500px;
+}
+
+.bill-metadata {
+  float: right;
+}
+
+.bill-news {
+  clear:both;
+  display: inline-block;
+  float: bottom;
+}
