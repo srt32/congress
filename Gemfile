@@ -9,6 +9,7 @@ end
 gem 'rails', '~> 5.0.1'
 gem 'material_design_lite-sass'
 gem 'puma', '~> 3.0'
+gem 'react_on_rails', "~> 6"
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -31,3 +32,5 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
